@@ -1,0 +1,538 @@
+{
+  "schema": "anti-bla.execution-plan/1",
+  "created": "2026-10-30",
+  "status": "planned",
+  "sourceBase": "75d18499c2fd3ec197301c449c9eb7e07eaaa818",
+  "design": "../../specs/2026-10-30-comprehensive-recovery-design.md",
+  "master": "../2026-10-30-comprehensive-recovery.md",
+  "normative": "Design and workstream acceptance predicates govern; task state never implies a genuine profile is qualified.",
+  "taskCount": 43,
+  "tasks": [
+    {
+      "id": "F0",
+      "title": "Baseline and canonical contracts",
+      "document": "00-foundation-and-evidence.md",
+      "dependsOn": [],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "F1",
+      "title": "Bounded retained evidence",
+      "document": "00-foundation-and-evidence.md",
+      "dependsOn": [
+        "F0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "F2",
+      "title": "Views and public operation lifetime",
+      "document": "00-foundation-and-evidence.md",
+      "dependsOn": [
+        "F1"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "F3",
+      "title": "Compatibility and lifecycle controls",
+      "document": "00-foundation-and-evidence.md",
+      "dependsOn": [
+        "F2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "B0",
+      "title": "Sealed manifest and oracle contracts",
+      "document": "01-blind-benchmarks.md",
+      "dependsOn": [
+        "F0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "B1",
+      "title": "Enforced lane isolation",
+      "document": "01-blind-benchmarks.md",
+      "dependsOn": [
+        "B0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "B2",
+      "title": "Paired execution and metrics",
+      "document": "01-blind-benchmarks.md",
+      "dependsOn": [
+        "B1",
+        "F2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "B3",
+      "title": "Exact judges and public summaries",
+      "document": "01-blind-benchmarks.md",
+      "dependsOn": [
+        "B2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "B4",
+      "title": "Held-out milestone scoring",
+      "document": "01-blind-benchmarks.md",
+      "dependsOn": [
+        "B3"
+      ],
+      "state": "planned",
+      "scope": "per-milestone-and-candidate"
+    },
+    {
+      "id": "J0",
+      "title": "Conservative effect proofs",
+      "document": "02-javascript-recovery.md",
+      "dependsOn": [
+        "F0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "J1",
+      "title": "Authorized project inventory",
+      "document": "02-javascript-recovery.md",
+      "dependsOn": [
+        "F1",
+        "J0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "J2",
+      "title": "Interprocedural summaries",
+      "document": "02-javascript-recovery.md",
+      "dependsOn": [
+        "J1"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "J3",
+      "title": "Feature slices and normalization",
+      "document": "02-javascript-recovery.md",
+      "dependsOn": [
+        "J2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "J4",
+      "title": "Project views and evidence export",
+      "document": "02-javascript-recovery.md",
+      "dependsOn": [
+        "J3",
+        "F2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "J5",
+      "title": "Protected and held-out qualification",
+      "document": "02-javascript-recovery.md",
+      "dependsOn": [
+        "J4",
+        "B3",
+        "R4"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "R0",
+      "title": "Trusted REA profile",
+      "document": "03-rea-orchestration.md",
+      "dependsOn": [
+        "F0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "R1",
+      "title": "Bounded owned MCP bridge",
+      "document": "03-rea-orchestration.md",
+      "dependsOn": [
+        "R0",
+        "F1"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "R2",
+      "title": "Two-attempt recovery controller",
+      "document": "03-rea-orchestration.md",
+      "dependsOn": [
+        "R1",
+        "J4"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "R3",
+      "title": "Cancellation and owned cleanup",
+      "document": "03-rea-orchestration.md",
+      "dependsOn": [
+        "R2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "R4",
+      "title": "Public and genuine REA integration",
+      "document": "03-rea-orchestration.md",
+      "dependsOn": [
+        "R3",
+        "F3"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "R5",
+      "title": "Separate static framework bridge",
+      "document": "03-rea-orchestration.md",
+      "dependsOn": [
+        "R4",
+        "S1",
+        "N0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "S0",
+      "title": "Metered artifact sources",
+      "document": "04-streaming-formats.md",
+      "dependsOn": [
+        "F0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "S1",
+      "title": "Native and Electron ranges",
+      "document": "04-streaming-formats.md",
+      "dependsOn": [
+        "S0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "S2",
+      "title": "ASAR streaming",
+      "document": "04-streaming-formats.md",
+      "dependsOn": [
+        "S0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "S3",
+      "title": "Bun stored-source operations",
+      "document": "04-streaming-formats.md",
+      "dependsOn": [
+        "S1",
+        "S2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "S4",
+      "title": "Plist and model ranges",
+      "document": "04-streaming-formats.md",
+      "dependsOn": [
+        "S0",
+        "S2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "S5",
+      "title": "Large-artifact qualification",
+      "document": "04-streaming-formats.md",
+      "dependsOn": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "B3",
+        "R4"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "V0",
+      "title": "Scenario admission and preflight",
+      "document": "05-runtime-validation.md",
+      "dependsOn": [
+        "F0",
+        "B0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "V1",
+      "title": "Owned runtime lifecycle",
+      "document": "05-runtime-validation.md",
+      "dependsOn": [
+        "V0",
+        "B1"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "V2",
+      "title": "Actual REA and behavior observations",
+      "document": "05-runtime-validation.md",
+      "dependsOn": [
+        "V1",
+        "R1"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "V3",
+      "title": "Finite behavioral judge",
+      "document": "05-runtime-validation.md",
+      "dependsOn": [
+        "V2",
+        "B3"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "V4",
+      "title": "Collector saturation accounting",
+      "document": "05-runtime-validation.md",
+      "dependsOn": [
+        "V2"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "V5",
+      "title": "Independent runtime qualification",
+      "document": "05-runtime-validation.md",
+      "dependsOn": [
+        "V3",
+        "V4"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "N0",
+      "title": "Genuine prerequisites and profiles",
+      "document": "06-framework-recovery.md",
+      "dependsOn": [
+        "F0",
+        "B0"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "N1",
+      "title": "Flutter layout feasibility",
+      "document": "06-framework-recovery.md",
+      "dependsOn": [
+        "N0",
+        "S1"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "N2",
+      "title": "Flutter typed/code recovery",
+      "document": "06-framework-recovery.md",
+      "dependsOn": [
+        "N1",
+        "R5"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "N3",
+      "title": "Unity pair and method handoff",
+      "document": "06-framework-recovery.md",
+      "dependsOn": [
+        "N0",
+        "S1",
+        "R5"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "N4",
+      "title": "JNI declaration-to-code chain",
+      "document": "06-framework-recovery.md",
+      "dependsOn": [
+        "N0",
+        "S1",
+        "R5"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "N5",
+      "title": "Genuine framework qualification",
+      "document": "06-framework-recovery.md",
+      "dependsOn": [
+        "N2",
+        "N3",
+        "N4",
+        "B3"
+      ],
+      "state": "planned",
+      "scope": "implementation"
+    },
+    {
+      "id": "L0",
+      "title": "Frozen candidate and clean package",
+      "document": "07-release-and-compatibility.md",
+      "dependsOn": [
+        "F3"
+      ],
+      "state": "planned",
+      "scope": "per-milestone-and-candidate"
+    },
+    {
+      "id": "L1",
+      "title": "Compatibility and independent review",
+      "document": "07-release-and-compatibility.md",
+      "dependsOn": [
+        "L0"
+      ],
+      "state": "planned",
+      "scope": "per-milestone-and-candidate"
+    },
+    {
+      "id": "L2",
+      "title": "Milestone evidence gate",
+      "document": "07-release-and-compatibility.md",
+      "dependsOn": [
+        "L1",
+        "B4"
+      ],
+      "state": "planned",
+      "scope": "per-milestone-and-candidate"
+    },
+    {
+      "id": "L3",
+      "title": "GitHub publication and verification",
+      "document": "07-release-and-compatibility.md",
+      "dependsOn": [
+        "L2"
+      ],
+      "state": "planned",
+      "scope": "per-milestone-and-candidate"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "M0",
+      "version": null,
+      "requires": [
+        "F3",
+        "B3"
+      ],
+      "gate": "Foundation only; no new recovery claim."
+    },
+    {
+      "id": "M1",
+      "version": "0.2.0",
+      "requires": [
+        "J5",
+        "R4",
+        "B4"
+      ],
+      "gate": "Tool and agent benefit distinct; new agent benefit requires eligible paired fresh-agent wins on three independent held-out seeds."
+    },
+    {
+      "id": "M2",
+      "version": "0.3.0",
+      "requires": [
+        "S5",
+        "B4"
+      ],
+      "gate": "Exact selected ranges, conditional candidates labelled, measured container-memory bound."
+    },
+    {
+      "id": "M3",
+      "version": "0.4.0",
+      "requires": [
+        "V5",
+        "B4"
+      ],
+      "gate": "Effective containment, genuine collector observations, finite behavior and owned cleanup."
+    },
+    {
+      "id": "M4",
+      "version": "0.5.0",
+      "requires": [
+        "N5",
+        "B4"
+      ],
+      "gate": "All required genuine Flutter, IL2CPP and JNI profiles qualified; runtime claims additionally require V5."
+    }
+  ],
+  "releaseTasks": [
+    "L0",
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "initialReady": [
+    "F0"
+  ],
+  "afterF0Parallel": [
+    "F1",
+    "B0",
+    "J0",
+    "R0",
+    "S0"
+  ],
+  "privacy": "No private fixture seed, oracle, credential, raw log or local absolute path belongs in this manifest."
+}

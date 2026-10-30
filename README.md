@@ -16,6 +16,7 @@
   <a href="#quick-start">Quick start</a> ·
   <a href="#what-it-does">Capabilities</a> ·
   <a href="#what-the-evidence-says">Results</a> ·
+  <a href="https://github.com/juniper234/anti-bla/blob/main/docs/ROADMAP.md">Roadmap</a> ·
   <a href="#mcp--agent-skill">MCP</a> ·
   <a href="#documentation">Docs</a>
 </p>
@@ -174,6 +175,7 @@ The research suite fails explicitly when its prerequisites are absent. Missing p
 | :--- | :--- |
 | [Coverage](docs/COVERAGE.md) | Measured outcomes and unresolved scope |
 | [Research notes](docs/RESEARCH.md) | Pins, test separation, reproduction and evidence handling |
+| [Development roadmap](https://github.com/juniper234/anti-bla/blob/main/docs/ROADMAP.md) | Planned milestones, architecture, implementation tasks and release gates |
 | [Shield inventory](docs/SHIELD-INVENTORY.md) | All 51 BLA modules and their source references |
 | [JavaScript](docs/JAVASCRIPT.md) · [ASAR](docs/ASAR.md) | Inspection APIs and recovery boundaries |
 | [Native](docs/NATIVE.md) · [Data formats](docs/DATA-FORMATS.md) | Structural views and selected data tasks |
