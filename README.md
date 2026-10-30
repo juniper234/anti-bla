@@ -9,9 +9,10 @@
   <img alt="Node.js 24.16 or newer" src="https://img.shields.io/badge/node-%E2%89%A5%2024.16-88dfac?style=flat-square&labelColor=17241d">
 </p>
 
-<p align="center"><strong>A CLI, MCP server and agent skill for inspecting BLA-protected artifacts alongside REA.</strong></p>
+<p align="center"><strong>A CLI, MCP server and agent skill for inspecting BLA-protected artifacts alongside <a href="https://github.com/morluto/rea">REA</a>.</strong></p>
 <p align="center">
   <a href="#in-response-to-bla">Why</a> ·
+  <a href="#works-with-rea">Works with REA</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#what-it-does">Capabilities</a> ·
   <a href="#what-the-evidence-says">Results</a> ·
@@ -26,6 +27,16 @@
 Use it to recover selected JavaScript facts, navigate amplified ASAR headers, inspect native and data structures, and prepare inspection views for [REA](https://github.com/morluto/rea). Original hashes, source ranges, assumptions and incomplete results stay visible.
 
 **v0.1 is a research preview.** Recovery claims apply to the measured tasks. A parser limit, an embedded claim or a successful inspection does not establish complete semantic recovery.
+
+## Works with REA
+
+Anti-BLA is a companion to [REA — Reverse Engineer Anything](https://github.com/morluto/rea) by [morluto](https://github.com/morluto). REA provides the broader reverse-engineering tools; Anti-BLA adds bounded inspection and evidence for selected BLA-protected artifacts. Your agent can use both together.
+
+1. Install REA using its [official setup guide](https://github.com/morluto/rea#quick-start).
+2. Add Anti-BLA's MCP server and agent skill using the [setup below](#mcp--agent-skill).
+3. Inspect the artifact with Anti-BLA, then pass a verified [inspection view](docs/SIDECARS.md) to REA when needed.
+
+The v0.1 handoff was verified against **REA 6.8.0**, pinned to [`317bf3f`](https://github.com/morluto/rea/tree/317bf3fe235e655b2d752d3be261cc0da7d00f2b). See the [measured results](#what-the-evidence-says) for the tested scope.
 
 ## Quick start
 
