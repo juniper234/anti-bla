@@ -1,0 +1,35 @@
+// Re-score a named retained control batch and historical snapshot, never targets.
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+import { createHash } from 'node:crypto';
+import { antiSelected, reaSelected, auditContainerJavaScript } from './container-predicates.mjs';
+const root=resolve(import.meta.dirname,'../..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const identity=p=>{const b=readFileSync(p);return {path:resolve(p),bytes:b.length,sha256:sha(b)};};
+const json=p=>JSON.parse(readFileSync(p,'utf8'));
+const controlsPath=resolve(process.argv[2]??''),auditPath=resolve(process.argv[3]??'');
+if(process.argv.length!==4)throw new Error('Usage: node test/helpers/revalidate-container-predicates.mjs CONTROL_EVIDENCE_JSON AUDIT_JSON');
+const historicalPath=join(root,'reports/C6-containers-2026-10-30T03-26-09-988Z.json');
+const baselineDir=join(root,'reports/review-bases/C6-containers-round0');
+const historical=json(historicalPath),audit=json(auditPath),controls=json(controlsPath),errors=[];
+const historicalIdentity=identity(historicalPath),baselineIdentity=identity(join(baselineDir,'C6-containers-2026-10-30T03-26-09-988Z.json'));
+if(historicalIdentity.sha256!==baselineIdentity.sha256)errors.push('historical report differs from frozen review base');
+if(audit.errors.length||audit.records.length!==33||audit.command_artifacts.length!==356)errors.push('named full snapshot audit did not succeed');
+const endpoint='/api/owned/predicate-control';
+const controlResults=controls.controls.map(c=>{
+ const bytes=readFileSync(c.source_path),anti=antiSelected(json(c.anti_path),endpoint,bytes),rea=reaSelected(c.command,endpoint,c.source_path);
+ const want=['selected','renamed-parameter'].includes(c.name);
+ if(sha(bytes)!==c.source_sha256||anti!==want||rea.selected_assertion!==want)errors.push('control mismatch: '+c.name);
+ return {name:c.name,expected:want,anti_selected:anti,rea_selected:rea,source:identity(c.source_path),anti_json:identity(c.anti_path),command:c.command};
+});
+const historicalJs=historical.records.filter(r=>['html','directory'].includes(r.family)).map(row=>({family:row.family,seed:row.seed,...auditContainerJavaScript(row,historical.commands)}));
+for(const row of historicalJs)if(row.errors.length)errors.push(row.family+' '+row.seed+': '+row.errors.join('; '));
+const files=['scripts/qualify-containers.mjs','test/helpers/container-audit.mjs','test/helpers/container-predicates.mjs','test/helpers/revalidate-container-predicates.mjs','test/container-predicates.test.mjs','test/container-audit-predicates.test.mjs'];
+const logs=['C6-containers-FIX-ROUND1-red.log','C6-containers-FIX-ROUND1-audit-red.log','C6-containers-FIX-ROUND1-green-attempt1.log','C6-containers-FIX-ROUND1-focused-green.log','C6-containers-FIX-ROUND1-revalidation.log'];
+const focusedLog=readFileSync(join(root,'reports/C6-containers-FIX-ROUND1-focused-green.log'),'utf8');
+const testCounts=Object.fromEntries(['tests','pass','fail','skipped','cancelled'].map(k=>[k,Number(new RegExp('(?:^|\\n)[^\\n]*?\\b'+k+' (\\d+)').exec(focusedLog)?.[1]??NaN)]));
+if(!Number.isSafeInteger(testCounts.tests)||testCounts.pass!==testCounts.tests||testCounts.fail!==0||testCounts.skipped!==0||testCounts.cancelled!==0)errors.push('focused test log is incomplete or not green');
+const result={schema:'anti-bla.c6-containers-predicate-revalidation/1',recorded_utc:new Date().toISOString(),status:errors.length?'ERROR':'FOCUSED_CHECKS_COMPLETE_INDEPENDENT_REVIEW_PENDING',audit_source:'fix-implementer',target_executed:false,orchestration_node:process.version,scope:'M2 selected static call predicate and raw-evidence rescoring only; not whole-C6 PASS or runtime equivalence',historical_report:historicalIdentity,frozen_report:baselineIdentity,historical_report_unchanged:historicalIdentity.sha256===baselineIdentity.sha256,retained_review:identity(join(root,'reports/C6-containers-REVIEW.md')),frozen_review_base:readdirSync(baselineDir).map(f=>identity(join(baselineDir,f))),full_snapshot_audit:identity(auditPath),full_snapshot_audit_summary:{records:audit.records.length,command_streams:audit.command_artifacts.length,errors:audit.errors},control_batch:identity(controlsPath),control_results:controlResults,historical_js_recomputed:historicalJs,covering_tests:{command:'node --test test/container-audit-predicates.test.mjs test/container-predicates.test.mjs',exit_code_observed:0,...testCounts},retained_logs:logs.map(f=>identity(join(root,'reports',f))),implementation:files.map(f=>identity(join(root,f))),deferred:['M1 historical directory provenance remains incomplete','M3 historical protector UTC timestamp labels unchanged','Historical benign Anti JSON was not retained; stored benign flags are not revalidated or used for JS task acceptance','Other format predicates outside this M2 scope retain their prior audit behavior'],resource_measurements:{peak_rss:null,cpu_seconds:null},errors};
+const stamp=new Date().toISOString().replace(/[:.]/g,'-'),out=join(root,'reports',`C6-containers-FIX-ROUND1-revalidation-${stamp}.json`);
+writeFileSync(out,JSON.stringify(result,null,2));
+console.log(JSON.stringify({report:out,status:result.status,controls:controlResults.length,historical_js:historicalJs.length,errors}));
+if(errors.length)process.exitCode=1;

@@ -1,0 +1,72 @@
+{
+  "name": "anti-bla",
+  "version": "0.1.0",
+  "description": "In response to BLA: bounded artifact analysis and evidence for REA",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.16.0"
+  },
+  "bin": {
+    "anti-bla": "dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/service.js"
+  },
+  "files": [
+    "dist",
+    "skills",
+    ".codex-plugin",
+    ".claude-plugin",
+    ".mcp.json",
+    "scripts/plugin-mcp-launcher.mjs",
+    "npm-shrinkwrap.json",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "docs/COVERAGE.md",
+    "docs/SIDECARS.md",
+    "docs/GENUINE-FRAMEWORKS.md",
+    "assets/readme-hero.svg",
+    "examples/routes.mjs",
+    "docs/RESEARCH.md",
+    "docs/JAVASCRIPT.md",
+    "docs/ASAR.md",
+    "docs/NATIVE.md",
+    "docs/DATA-FORMATS.md",
+    "docs/SHIELD-INVENTORY.md",
+    "docs/shield-inventory.json",
+    "reports/README.md",
+    "reports/v0.1-summary.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node scripts/test-portable.mjs",
+    "check": "npm run test",
+    "start": "node dist/cli.js",
+    "test:research": "npm run build && node scripts/test-portable.mjs --research"
+  },
+  "dependencies": {
+    "@babel/generator": "7.29.8",
+    "@babel/parser": "7.29.11",
+    "@babel/traverse": "7.29.10",
+    "@babel/types": "7.29.11",
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@types/babel__generator": "7.27.0",
+    "@types/babel__traverse": "7.28.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juniper234/anti-bla.git"
+  },
+  "homepage": "https://github.com/juniper234/anti-bla#readme",
+  "bugs": {
+    "url": "https://github.com/juniper234/anti-bla/issues"
+  }
+}

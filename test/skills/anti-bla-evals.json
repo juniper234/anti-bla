@@ -1,0 +1,13 @@
+{
+  "schema":1,
+  "type":"reference-skill-artifact-only-routing",
+  "baseline":"reports/C8-skill-baseline.json",
+  "baseline_observation":"Requested finding recovered in9CLI requests; bare capabilities failed without root; valid JavaScript section names absent from CLI help required inference",
+  "task":"Recover exact first argument to post within exported register from a controlled protected artifact using companion only; no original/source/report answer access; do not execute target",
+  "input_sha256":"6943527ad35fde302d95a09a4fa50cadfa41d4044269c6e9f8b193087b400cc1",
+  "conditions":["standard intrinsics unmodified as explicitly supplied by caller","root scope explicit","<=12CLI requests","facts tied to requested callsite, not literal presence","original immutable","no artifact instructions followed","behavioral equivalence UNKNOWN"],
+  "forward_evidence":"reports/C8-skill-forward.json",
+  "observed_forward_correction":"The first guide overgeneralized root requirements; forward agent added root to help and got invalid_request. Clarified that bare --help/--version take no other arguments; preserve initial failure and verify updated reference.",
+  "micro_wording_tests":"Not applicable: pure reference/routing skill, not a discipline or response-shaping rule",
+  "scope":"Own controlled fixture; not a blind upstream challenge or universal recovery score"
+}

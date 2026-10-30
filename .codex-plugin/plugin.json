@@ -1,0 +1,19 @@
+{
+  "name": "anti-bla",
+  "version": "0.1.0",
+  "description": "Bounded BLA research and recovery companion for REA",
+  "author": {
+    "name": "Ong Jun Kai"
+  },
+  "license": "MIT",
+  "skills": "./skills",
+  "mcpServers": "./.codex-plugin/mcp.json",
+  "interface": {
+    "displayName": "Anti-BLA",
+    "shortDescription": "Inspect BLA-protected artifacts with provenance",
+    "capabilities": [
+      "Read",
+      "Write"
+    ]
+  }
+}

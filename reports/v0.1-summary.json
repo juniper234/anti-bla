@@ -1,0 +1,103 @@
+{
+  "schema": "anti-bla.public-release-summary/1",
+  "version": "0.1.0",
+  "tag": "v0.1",
+  "scope": "Local static research preview; no universal recovery or incremental agent-win claim",
+  "pins": {
+    "bla": {
+      "version": "1.5.1",
+      "commit": "b2d643600774d62e562081129e55b13b0d9e8a80"
+    },
+    "rea": {
+      "version": "6.8.0",
+      "commit": "317bf3fe235e655b2d752d3be261cc0da7d00f2b"
+    }
+  },
+  "public_source_validation": {
+    "node": "v24.16.0",
+    "build_exit": 0,
+    "portable_tests": 326,
+    "passed": 326,
+    "failed": 0,
+    "skipped": 0,
+    "research_tests_separate": 22,
+    "command": "npm test",
+    "research_command": "npm run test:research",
+    "prerequisites": "Default portable suite needs no research checkout or retained report. Research opt-in fails clearly when prerequisites are absent."
+  },
+  "initial_research_workspace": {
+    "version": "0.1.0-dev.1",
+    "total_tests": 348,
+    "passed": 348,
+    "failed": 0,
+    "independent_review": "Code/security/evidence review and scoped fix reviews; accepted Minor limitations retained",
+    "artifact_acceptance_checks": 131,
+    "stable_install_checks": 91
+  },
+  "measurements": {
+    "source_inventory": {
+      "files": 51,
+      "total": 51,
+      "behavioral_recovery_rate": null
+    },
+    "javascript": {
+      "independent_seeds": 3,
+      "intensities": 4,
+      "selected_tool_pipeline_improvements": 12,
+      "contained_business_checks": 400,
+      "full_equivalence": "UNKNOWN"
+    },
+    "fresh_agents": {
+      "lanes": 3,
+      "heldout_tasks_per_lane": 3,
+      "benign_controls_per_lane": 1,
+      "all_selected_tasks_completed": true,
+      "incremental_agent_win": false,
+      "model": "requested gpt-6.1-sol",
+      "effort": "requested xhigh",
+      "model_observed": null,
+      "effort_observed": null,
+      "comparable_command_efficiency": null,
+      "tokens": null,
+      "cost": null
+    },
+    "wasm": {
+      "arithmetic_invocations": 72,
+      "whole_module_equivalence": "UNKNOWN"
+    },
+    "genuine_electron": {
+      "seeds": 3,
+      "real_fuse_changes_verified": true,
+      "source_informed_known_range_view_verified": true,
+      "official_reader_baseline_already_succeeds": true,
+      "native_default_size_admission": "UNKNOWN",
+      "runtime_enforcement": "UNKNOWN"
+    },
+    "genuine_flutter": {
+      "builds": 3,
+      "snapshot_metadata_tasks": 3,
+      "exact_typed_labels": 2,
+      "unresolved_labels": 1,
+      "business_function_recovery": "UNKNOWN"
+    }
+  },
+  "unresolved": [
+    "Protected binary plist",
+    "Original source-map provenance lost by non-injective replacement",
+    "Damaged original GGUF validity/inference; candidate reconstruction is conditional",
+    "Third Flutter typed label and native business/runtime recovery",
+    "Genuine Unity IL2CPP paired artifacts",
+    "Signatures and actual enforcement",
+    "Actual REA collector saturation",
+    "Aggregate backpressure, total peak RSS and hostile concurrent filesystem writers",
+    "Complete effect analysis and general semantic equivalence"
+  ],
+  "evidence": {
+    "classification": "Source-informed controlled fixtures plus artifact-only worker task protocol",
+    "leaked_upstream_challenge_answers_used": false,
+    "raw_records": "Retained locally; excluded from public distribution",
+    "generation_and_audit_harnesses": "Published source requires separately acquired pinned tools and appropriate owned fixtures",
+    "projected_metrics_are_measurements": false,
+    "replays_are_new_independent_seeds": false
+  }
+}

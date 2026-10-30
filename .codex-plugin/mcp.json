@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "anti-bla": {
+      "command": "node",
+      "args": ["./scripts/plugin-mcp-launcher.mjs"],
+      "cwd": ".",
+      "startup_timeout_sec": 30
+    }
+  }
+}

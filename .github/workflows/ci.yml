@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portable-tests:
+    name: Node 24 / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      TEMP: ${{ github.workspace }}/.ci-temp
+      TMP: ${{ github.workspace }}/.ci-temp
+      TMPDIR: ${{ github.workspace }}/.ci-temp
+      NPM_CONFIG_CACHE: ${{ github.workspace }}/.ci-cache
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.1
+          package-manager-cache: false
+      - name: Prepare isolated temporary directory
+        run: node -e "require('node:fs').mkdirSync(process.env.TEMP, { recursive: true })"
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run portable tests
+        run: npm test
+      - name: Audit public source and links
+        run: node scripts/check-release.mjs
+      - name: Inspect the benign example
+        run: node dist/cli.js inspect-javascript examples/routes.mjs --root examples --entry-export register --section facts
